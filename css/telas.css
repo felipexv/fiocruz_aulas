@@ -1,0 +1,418 @@
+body {
+    background-color: #b3b3b3;
+    overflow: hidden;
+}
+
+/* área do conteúdo */
+main {
+    position: relative;
+    display: table;
+    width: 100%;
+    margin-top: 10px;
+}
+
+ /* Tela (slide) */
+.tela {
+    width: 800px;
+    height: 500px;
+    padding: 0;
+    background: #ffffff;
+    order: 2;
+    border-radius: 9px;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transform-origin: center center;
+}
+
+/* botões de anterior e próximo */
+.nav-telas-anterior,
+.nav-telas-proxima {
+    display: none;
+    width: 50px;
+    height: 150px;
+    background: #e5e5e5 center center no-repeat;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.nav-telas-anterior {
+    background-image: url(../img/anterior.svg);
+    left: 0;
+}
+.nav-telas-proxima {
+    background-image: url(../img/proxima.svg);
+    right: 0;
+}
+.nav-telas-anterior:hover,
+.nav-telas-proxima:hover {
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.7);
+}
+.nav-telas-anterior {
+    order: 1;
+    border-radius: 0 9px 9px 0;
+    transition: 0.3s;
+}
+.nav-telas-proxima {
+    order: 3;
+    border-radius: 9px 0 0 9px;
+    transition: 0.3s;
+}
+
+/* barra de progresso */
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 9px 0;
+}
+.nav-telas {
+    width: 100%;
+}
+.nav-telas-progresso {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+    display: table;
+    height: 10px;
+}
+.nav-telas-progresso a {
+    display: table-cell;
+    height: 10px;
+    background-color: #fff;
+    border: 1px #b3b3b3 solid;
+    border-collapse: collapse;
+    position: relative;
+    font-size: 12px;
+    text-decoration: none;
+    color: #222;
+    padding: 0;
+}
+.nav-telas-progresso a:first-child {
+    border-radius: 9px 0 0 9px;
+}
+.nav-telas-progresso a:last-child {
+    border-radius: 0 9px 9px 0;
+}
+.nav-telas-progresso .tela-atual {
+    background-color: #ff9100;
+}
+.nav-telas-progresso .tela-visualizada {
+    background-color: #ff9100;
+}
+.nav-telas-progresso a > span > span {
+    display: none;
+    width: 130px;
+    height: auto;
+    padding: 10px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    right: 0;
+    background-color: #e5e5e5;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+.nav-telas-progresso a > span > span:after {
+    content: "";
+    display: block; /* reduce the damage in FF3.0 */
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: 0;
+    border-width: 8px 5px 0;
+    border-style: solid;
+    border-color: #e5e5e5 transparent;
+}
+.nav-telas-progresso a:hover {
+    height: 10px;
+}
+.nav-telas-progresso a:hover>span>span {
+    display: block;
+}
+.nav-telas-progresso-pagina {
+    display: block;
+    text-align: right;
+    font-size: 10px;
+}
+/* ==========================================================================
+   Estilos Gerais de Texto e Conteúdo
+   ========================================================================== */
+.tela hgroup,
+.tela h1,
+.tela h2,
+.tela h3,
+.tela h4,
+.tela h5,
+.tela h6 {
+    font-family: Merriweather, 'Times New Roman', Times, serif;
+    border: none 0px transparent;
+}
+.tela h1 {
+    margin-left: -32px;
+    margin-top: 16px;
+    padding-left: 8px;
+    border-width: 0 0 0 24px;
+    border-style: solid;
+    border-color: #ff9100;
+}
+.tela a,
+.tela a:visited,
+.tela a:hover,
+.tela a:active {
+    background-color: #999;
+    color: white;
+    border-radius: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    text-decoration: none;
+    transition: .3s;
+}
+.tela a:hover,
+.tela a:active {
+    background-color: #666;
+}
+.tela a[href^="http"]::after {
+    content: " " url("../img/link-externo.svg");
+    position: relative;
+    top: 2px;
+}
+.tela div div:first-child .destaque {
+    padding: 8px 12px 8px 80px;
+    margin-left: -32px;
+    margin-right: -12px;
+    border-radius: 0 9px 9px 0;
+}
+.tela div div:last-child .destaque {
+    margin-left: -12px;
+    margin-right: -32px;
+    padding: 8px 80px 8px 12px;
+    border-radius: 9px 0 0 9px;
+    background-position: top 16px right 6px;
+}
+.tela div div:last-child .destaque.importante {
+    background-position: center right 6px;
+}
+/* ==========================================================================
+   Leiautes de Telas
+   ========================================================================== */
+.tela div {
+    background-color: transparent;
+}
+
+/* .tela-leiaute-1x1 -> 1 linha x 1 coluna */
+.tela-leiaute-1x1 {
+    width: 736px;
+    height: 468px;
+    margin: 0;
+    padding: 16px 32px;
+}
+
+/* .tela-leiaute-2x1 -> 2 linhas x 1 coluna */
+.tela-leiaute-2x1 > div,
+.tela-leiaute-secao > div {
+    width: 736px;
+    height: 213px;
+    margin: 0;
+    padding: 16px 32px;
+}
+
+/* .tela-leiaute-secao -> para títulos e início de seções.
+/* Use as classes .tela-leiaute-2x1-l1 e .tela-leiaute-2x1-l2 para configurar as linhas */
+.tela-leiaute-secao .tela-leiaute-2x1-l1 {
+    border-bottom: 10px solid #ff9100;
+    position: relative;
+}
+.tela-leiaute-secao .tela-leiaute-2x1-l1 hgroup,
+.tela-leiaute-secao .tela-leiaute-2x1-l1 h1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    font-size: 24px;
+    font-weight: normal;
+    font-family: "Open Sans","Helvetica","Arial",sans-serif;
+    text-align: center;
+    border: none 0px transparent;
+    padding-left: 0;
+}
+.tela-leiaute-secao .tela-leiaute-2x1-l1 hgroup h1 {
+    position: relative;
+}
+.tela-leiaute-secao .tela-leiaute-2x1-l1 hgroup h2 {
+    margin: 0;
+    font-weight: normal;
+    font-size: 20px;
+    border: none 0px transparent;
+    font-family: "Open Sans","Helvetica","Arial",sans-serif;
+}
+.tela-leiaute-secao .tela-leiaute-2x1-l2 hgroup,
+.tela-leiaute-secao .tela-leiaute-2x1-l2 h1 {
+    margin: -6px 0 0;
+    font-family: Merriweather, 'Times New Roman', Times, serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    border: none 0px transparent;
+    padding-left: 0;
+}
+.tela-leiaute-secao .tela-leiaute-2x1-l2 h1::before {
+    content: attr(data-numero-secao) ". ";
+}
+.tela-leiaute-secao .tela-leiaute-2x1-l2 hgroup h2 {
+    font-family: Merriweather, 'Times New Roman', Times, serif;
+    font-size: 24px;
+    margin: 0;
+    border: none 0px transparent;
+}
+
+/* .tela-leiaute-1x2 -> 1 linha x 2 colunas */
+.tela-leiaute-1x2 > div {
+    width: 352px;
+    height: 468px;
+    margin: 0;
+    padding: 16px 32px;
+    float: left;
+    position: relative;
+}
+.tela-leiaute-1x2 > div:first-child {
+    padding-right: 16px;
+}
+.tela-leiaute-1x2 > div:last-child {
+    padding-left: 16px;
+}
+.tela-leiaute-1x2 .imagem-tela-cheia {
+    width: 400px;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.tela-leiaute-1x2 > div:first-child .imagem-tela-cheia {
+    border-radius: 9px 0 0 9px;
+}
+.tela-leiaute-1x2 > div:last-child .imagem-tela-cheia {
+    border-radius: 0 9px 9px 0;
+}
+
+/* .tela-leiaute-1x3 -> 1 linha x 3 colunas */
+.tela-leiaute-1x3 > div {
+    width: 224px;
+    height: 468px;
+    margin: 0;
+    padding: 16px 32px;
+    float: left;
+    position: relative;
+}
+.tela-leiaute-1x3 > div:first-child {
+    padding-right: 16px;
+}
+.tela-leiaute-1x3 > div:nth-child(2) {
+    padding: 16px;
+}
+.tela-leiaute-1x3 > div:last-child {
+    padding-left: 16px;
+}
+.tela-leiaute-1x3 .imagem-tela-cheia {
+    width: 272px;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+.tela-leiaute-1x3 > div:first-child .imagem-tela-cheia {
+    border-radius: 9px 0 0 9px;
+}
+.tela-leiaute-1x3 > div:last-child .imagem-tela-cheia {
+    border-radius: 0 9px 9px 0;
+}
+.tela-leiaute-1x3 .tela-leiaute-1x3-2col {
+    width: 480px;
+}
+.tela-leiaute-1x3 .tela-leiaute-1x3-2col .imagem-tela-cheia {
+    width: 528px;
+    height: 500px;
+}
+
+/* .tela-leiaute-2x2 -> 2 linhas x 2 colunas */
+/*.tela-leiaute-2x2 div {
+    width: 368px;
+    height: 218px;
+    margin: 0;
+    padding: 16px;
+    float: left;
+    overflow: hidden;
+}
+.tela-leiaute-2x2 img {
+    width: 400px;
+    height: auto;
+    margin: -16px;
+}
+.tela-leiaute-2x2 div:nth-child(1)  {
+    border-top-left-radius: 9px;
+}
+.tela-leiaute-2x2 div:nth-child(2)  {
+    border-top-right-radius: 9px;
+}
+.tela-leiaute-2x2 div:nth-child(3)  {
+    border-bottom-left-radius: 9px;
+}
+.tela-leiaute-2x2 div:nth-child(4)  {
+    border-bottom-right-radius: 9px;
+}*/
+
+/* Classes Moldáveis */
+[class^="coluna-"] {
+    float: left;
+    height: auto;
+}
+.coluna-1_2 {
+    width: 352px;
+}
+.coluna-1_3 {
+    width: 224px;
+}
+.linha-1_2 {
+    height: 213px;
+}
+
+.tela div .coluna-1x2 {
+    width: 352px;
+    height: auto;
+    float: left;
+}
+.tela div .coluna-1x3 {
+    width:224px;
+    height: auto;
+    float: left;
+} 
+.tela div .coluna-1x3-2col {
+    width: 480px;
+    height: auto;
+    float: left;
+}
+.tela div .margem-grande-esquerda {
+    margin-left: 32px;
+}
+.tela div .margem-grande-direita {
+    margin-right: 32px;
+}
+.tela div .margem-pequena-esquerda {
+    margin-left: 16px;
+}
+.tela div .margem-pequena-direita {
+    margin-right: 16px;
+}
